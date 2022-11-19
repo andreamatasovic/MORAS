@@ -1,0 +1,11 @@
+CHIP zadatak1b{
+
+	IN x, y, z;
+	OUT out;
+	
+	PARTS:
+	Or(a = y,b = z,out = yOrz);
+	Not(in = yOrz,out = notyOrz);
+	And(a = x,b = notyOrz,out = out);
+	
+}

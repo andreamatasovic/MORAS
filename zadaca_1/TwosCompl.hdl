@@ -1,0 +1,10 @@
+CHIP TwosCompl{ //sve 0 u 1 i obrnuto +1
+	
+	IN in[16];
+	OUT out[16];
+	
+    PARTS:
+    Not16(in = in, out = notIn);
+    Inc16(in = notIn, out = out); //16-bit incrementer.  out = in + 1 (16-bit addition)
+	
+}

@@ -1,0 +1,13 @@
+/* Shifting a binary number by one bit is equivalent to multiplying 
+(when shifting to the left) or dividing (when shifting to the right) the number by 2. */
+
+CHIP Mult4{
+    
+	IN in[16];
+    OUT out[16];
+
+    PARTS:
+    BitShiftL(in = in, out = BSL);
+    BitShiftL(in = BSL, out = out);
+	
+}

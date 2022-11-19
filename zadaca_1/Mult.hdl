@@ -1,0 +1,72 @@
+CHIP Mult{
+	
+	IN a[16], b[16];
+	OUT out[16];
+	
+	PARTS:
+	Mux16(a = false, b = a, sel = b[0], out = m0);
+	// Mux16 : if sel=0 then for i=0..15 out[i]=a[i]
+	//		   else for i=0..15 out[i]=b[i]
+	
+	BitShiftL(in = a, out = L1);
+	Mux16(a = false, b = L1, sel = b[1], out = m1);
+	
+	BitShiftL(in = L1, out = L2);
+	Mux16(a = false, b = L2, sel = b[2], out = m2);
+	
+	BitShiftL(in = L2, out = L3);
+	Mux16(a = false, b = L3, sel = b[3], out = m3);
+	
+	BitShiftL(in = L3, out = L4);
+	Mux16(a = false, b = L4, sel = b[4], out = m4);
+	
+	BitShiftL(in = L4, out = L5);
+	Mux16(a = false, b = L5, sel = b[5], out = m5);
+	
+	BitShiftL(in = L5, out = L6);
+	Mux16(a = false, b = L6, sel = b[6], out = m6);
+	
+	BitShiftL(in = L6, out = L7);
+	Mux16(a = false, b = L7, sel = b[7], out = m7);
+	
+	BitShiftL(in = L7, out = L8);
+	Mux16(a = false, b = L8, sel = b[8], out = m8);
+	
+	BitShiftL(in = L8, out = L9);
+	Mux16(a = false, b = L9, sel = b[9], out = m9);
+	
+	BitShiftL(in = L9, out = L10);
+	Mux16(a = false, b = L10, sel = b[10], out = m10);
+	
+	BitShiftL(in = L10, out = L11);
+	Mux16(a = false, b = L11, sel = b[11], out = m11);
+	
+	BitShiftL(in = L11, out = L12);
+	Mux16(a = false, b = L12, sel = b[12], out = m12);
+	
+	BitShiftL(in = L12, out = L13);
+	Mux16(a = false, b = L13, sel = b[13], out = m13);
+	
+	BitShiftL(in = L13, out = L14);
+	Mux16(a = false, b = L14, sel = b[14], out = m14);
+	
+	BitShiftL(in = L14, out = L15);
+	Mux16(a = false, b = L15, sel = b[15], out = m15);
+	
+	Add16(a = m0, b = m1, out = a0);
+	Add16(a = a0, b = m2, out = a1);
+	Add16(a = a1, b = m3, out = a2);
+	Add16(a = a2, b = m4, out = a3);
+	Add16(a = a3, b = m5, out = a4);
+	Add16(a = a4, b = m6, out = a5);
+	Add16(a = a5, b = m7, out = a6);
+	Add16(a = a6, b = m8, out = a7);
+	Add16(a = a7, b = m9, out = a8);
+	Add16(a = a8, b = m10, out = a9);
+	Add16(a = a9, b = m11, out = a10);
+	Add16(a = a10, b = m12, out = a11);
+	Add16(a = a11, b = m13, out = a12);
+	Add16(a = a12, b = m14, out = a13);
+	Add16(a = a13, b = m15, out = out);
+	
+}
