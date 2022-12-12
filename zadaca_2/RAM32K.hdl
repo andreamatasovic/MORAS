@@ -1,0 +1,21 @@
+CHIP RAM32K{
+	
+	IN in[16], addr[15], load[1];
+	OUT out[16];
+
+	PARTS:
+	DMux(in=load, sel=addr[14], a=load0, b=load1);
+	//demultipleksor, obrnuto od mux
+	//ako je addr 0 uzima a=load0, ako je 1 uzima b=load1
+	
+	RAM16K(in=in, load=load0, address=addr[0..13], out=out1);
+	RAM16K(in=in, load=load1, address=addr[0..13], out=out2);
+	/*Memory of 16K registers, each 16 bit-wide. Out holds the value
+	stored at the memory location specified by address. If load=1, then 
+	the in value is loaded into the memory location specified by address 
+	(the loaded value will be emitted to out after the next time step.)*/
+	
+	Mux16(a=out1, b=out2, sel=addr[14], out=out);
+	//if sel=0 then out=out1 else out=out2
+	
+}
